@@ -21,7 +21,7 @@ def get_similar_books(catalog_vectors, input_book_vectors):
     return most_similar_books
 
 
-with open("./EPL Sci-Fi Fantasy Transactions.csv", "r") as file:
+with open("./datasets/transactions.csv", "r") as file:
     dataset = np.genfromtxt(file, delimiter=",", dtype=None)
 
 vectorizer = Vectorizer("BAAI/bge-large-en-v1.5")
