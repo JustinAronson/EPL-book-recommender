@@ -6,7 +6,15 @@ import numpy as np
 def generate_distance_matrix(vectorizer, dataset):
     vectors = vectorizer.vectorize(dataset)
     np.save("./results/catalog_vectors.npy", vectors)
-    return dataset
+    return vectors
+
+
+def get_input_books(vectorizer):
+    filename = input("Enter the input book filename")
+    with open(filename, "r") as file:
+        dataset = np.genfromtxt(file, delimiter=",", dtype=None)
+
+    return vectorizer.vectorize(dataset)
 
 
 def get_similar_books(catalog_vectors, input_book_vectors):
@@ -27,4 +35,5 @@ with open("./datasets/transactions.csv", "r") as file:
 vectorizer = Vectorizer("BAAI/bge-large-en-v1.5")
 catalog_vectors = generate_distance_matrix(vectorizer, dataset)
 
+get_input_books(vectorizer)
 get_similar_books(catalog_vectors)
