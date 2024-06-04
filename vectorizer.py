@@ -18,7 +18,8 @@ class Vectorizer:
         return np.array([val_dict[val] for val in column])
 
     def vectorize(self, dataset):
+        columns = []
         for i in range(dataset.shape[1]):
-            dataset[:, i] = self.encode_unique(dataset[:, i])
-        return dataset
-        return np.stack((pathogenicity_encodings, encodings), axis=2)
+            print('col ', i, ' done')
+            columns.append(self.encode_unique(dataset[:, i]))
+        return np.stack(columns, axis=2)
