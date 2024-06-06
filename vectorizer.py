@@ -19,7 +19,7 @@ class Vectorizer:
 
     def vectorize(self, dataset):
         columns = []
-        for i in range(dataset.shape[1]):
+        for i in range(dataset.shape[1] - 1):
             print('col ', i, ' done')
             columns.append(self.encode_unique(dataset[:, i]))
         return np.stack(columns, axis=2)
